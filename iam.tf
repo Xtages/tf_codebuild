@@ -9,7 +9,7 @@ resource "aws_iam_role" "xtages_codebuild_ci_role" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "Service": "codebuild.amazonaws.com",
-        "AWS": "arn:aws:iam::606626603369:user/terraform"
+        "AWS": "arn:aws:iam::${var.account_id}:user/terraform-dev"
       },
       "Effect": "Allow"
     }
@@ -29,7 +29,7 @@ resource "aws_iam_role" "xtages_codebuild_cd_role" {
       "Action": "sts:AssumeRole",
       "Principal": {
         "Service": "codebuild.amazonaws.com",
-        "AWS": "arn:aws:iam::606626603369:user/terraform"
+        "AWS": "arn:aws:iam::${var.account_id}:user/terraform-dev"
       },
       "Effect": "Allow"
     }

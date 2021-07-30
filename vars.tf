@@ -1,2 +1,3 @@
-variable "env" {
-}
+variable "env" {}
+
+variable "account_id" {}
