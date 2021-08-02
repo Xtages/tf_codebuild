@@ -8,7 +8,8 @@
         "logs:PutLogEvents"
       ],
       "Resource": [
-        "arn:aws:logs:*:$${var.account_id}:log-group:*"
+        "arn:aws:logs:*:${account_id}:log-group:*",
+        "arn:aws:logs:*:${account_id}:log-group:*:log-stream:*"
       ],
       "Condition": {
         "StringEquals": {
@@ -22,7 +23,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm:*:$${var.account_id}:parameter*"
+        "arn:aws:ssm::${account_id}:parameter*"
       ],
       "Condition": {
         "StringEquals": {
@@ -36,7 +37,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm:*:$${var.account_id}:parameter/codebuild/matias/token"
+        "arn:aws:ssm::${account_id}:parameter/codebuild/matias/token"
       ]
     },
     {
@@ -46,7 +47,7 @@
         "ecr:BatchGetImage"
       ],
       "Resource": [
-        "arn:aws:ecr:*:$${var.account_id}:repository/xtages-build-images",
+        "arn:aws:ecr::${account_id}:repository/xtages-build-images",
         "arn:aws:s3:::xtages-buildspecs/*"
       ]
     }

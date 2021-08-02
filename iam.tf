@@ -39,11 +39,15 @@ EOF
 resource "aws_iam_role_policy" "xtages_codebuild_cd_policy" {
   name = "xtages-codebuild-cd-role-policy"
   role = aws_iam_role.xtages_codebuild_cd_role.id
-  policy = templatefile("${path.module}/policies/xtages-codebuild-cd-role-policy.json",{})
+  policy = templatefile("${path.module}/policies/xtages-codebuild-cd-role-policy.json",{
+    account_id = var.account_id
+  })
 }
 
 resource "aws_iam_role_policy" "xtages_codebuild_ci_policy" {
   name = "xtages-codebuild-ci-role-policy"
   role = aws_iam_role.xtages_codebuild_ci_role.id
-  policy = templatefile("${path.module}/policies/xtages-codebuild-ci-role-policy.json",{})
+  policy = templatefile("${path.module}/policies/xtages-codebuild-ci-role-policy.json",{
+    account_id = var.account_id
+  })
 }
