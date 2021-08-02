@@ -14,7 +14,7 @@
         "ecr:BatchCheckLayerAvailability"
       ],
       "Resource": [
-        "arn:aws:ecr:*:606626603369:repository/*"
+        "arn:aws:ecr::${account_id}:repository/*"
       ],
       "Condition": {
         "StringEquals": {
@@ -29,7 +29,7 @@
         "logs:PutLogEvents"
       ],
       "Resource": [
-        "arn:aws:logs:*:606626603369:log-group:*"
+        "arn:aws:logs::${account_id}:log-group:*"
       ],
       "Condition": {
         "StringEquals": {
@@ -43,7 +43,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm:*:606626603369:parameter*"
+        "arn:aws:ssm::${account_id}:parameter*"
       ],
       "Condition": {
         "StringEquals": {
@@ -57,7 +57,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm:*:606626603369:parameter/codebuild/matias/token"
+        "arn:aws:ssm::${account_id}:parameter/codebuild/matias/token"
       ]
     },
     {
@@ -68,7 +68,7 @@
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:ecr:*:606626603369:repository/xtages-build-images*",
+        "arn:aws:ecr::${account_id}:repository/xtages-build-images*",
         "arn:aws:s3:::xtages-buildspecs",
         "arn:aws:s3:::xtages-tfstate",
         "arn:aws:s3:::xtages-tfstate-customers"
@@ -133,7 +133,7 @@
       "Effect": "Allow",
       "Action": "iam:PassRole",
       "Resource": [
-        "arn:aws:iam::606626603369:role/ecs_service_role*"
+        "arn:aws:iam::${account_id}:role/ecs_service_role*"
       ],
       "Condition": {
         "StringEquals": {
@@ -147,7 +147,7 @@
       "Effect": "Allow",
       "Action": "iam:PassRole",
       "Resource": [
-        "arn:aws:iam::606626603369:role/apps-task-role*"
+        "arn:aws:iam::${account_id}:role/apps-task-role*"
       ],
       "Condition": {
         "StringEquals": {
