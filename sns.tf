@@ -11,7 +11,7 @@ resource "aws_sns_topic" "build_updates_topic" {
         "Service": "codestar-notifications.amazonaws.com"
       },
       "Action": "SNS:Publish",
-      "Resource": "arn:aws:sns:us-east-1:606626603369:build-updates-topic"
+      "Resource": "arn:aws:sns:us-east-1:${var.account_id}:build-updates-topic"
     }
   ]
 }

@@ -8,7 +8,7 @@ resource "aws_iam_role" "xtages_codebuild_ci_role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "codebuild.amazonaws.com",
+        "Service": "codebuild.amazonaws.com"
       },
       "Effect": "Allow"
     }
@@ -27,7 +27,7 @@ resource "aws_iam_role" "xtages_codebuild_cd_role" {
     {
       "Action": "sts:AssumeRole",
       "Principal": {
-        "Service": "codebuild.amazonaws.com",
+        "Service": "codebuild.amazonaws.com"
       },
       "Effect": "Allow"
     }
