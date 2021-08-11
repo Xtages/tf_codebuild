@@ -14,7 +14,7 @@
         "ecr:BatchCheckLayerAvailability"
       ],
       "Resource": [
-        "arn:aws:ecr::${account_id}:repository/*"
+        "arn:aws:ecr:*:${account_id}:repository/*"
       ],
       "Condition": {
         "StringEquals": {
@@ -29,7 +29,7 @@
         "logs:PutLogEvents"
       ],
       "Resource": [
-        "arn:aws:logs::${account_id}:log-group:*"
+        "arn:aws:logs:*:${account_id}:log-group:*"
       ],
       "Condition": {
         "StringEquals": {
@@ -43,7 +43,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm::${account_id}:parameter*"
+        "arn:aws:ssm:*:${account_id}:parameter*"
       ],
       "Condition": {
         "StringEquals": {
@@ -57,7 +57,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm::${account_id}:parameter/codebuild/matias/token"
+        "arn:aws:ssm:*:${account_id}:parameter/codebuild/matias/token"
       ]
     },
     {
@@ -68,10 +68,11 @@
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:ecr::${account_id}:repository/xtages-build-images*",
-        "arn:aws:s3:::xtages-buildspecs",
-        "arn:aws:s3:::xtages-tfstate",
-        "arn:aws:s3:::xtages-tfstate-customers"
+        "arn:aws:ecr:*:${account_id}:repository/xtages-build-images*",
+        "arn:aws:ecr:*:${account_id}:repository/node",
+        "arn:aws:s3:::xtages-buildspecs${environment}",
+        "arn:aws:s3:::xtages-${env_short}tfstate",
+        "arn:aws:s3:::xtages-tfstate-customers${environment}"
       ]
     },
     {
@@ -81,9 +82,9 @@
         "s3:PutObject"
       ],
       "Resource": [
-        "arn:aws:s3:::xtages-buildspecs/*",
-        "arn:aws:s3:::xtages-tfstate/*",
-        "arn:aws:s3:::xtages-tfstate-customers/*"
+        "arn:aws:s3:::xtages-buildspecs${environment}/*",
+        "arn:aws:s3:::xtages-${env_short}tfstate/*",
+        "arn:aws:s3:::xtages-tfstate-customers${environment}/*"
       ]
     },
     {
@@ -128,6 +129,13 @@
         "ecr:GetAuthorizationToken"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": [
+        "arn:aws:iam::${account_id}:role/aws-service-role*"
+      ]
     },
     {
       "Effect": "Allow",
