@@ -23,7 +23,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm::${account_id}:parameter*"
+        "arn:aws:ssm:*:${account_id}:parameter*"
       ],
       "Condition": {
         "StringEquals": {
@@ -37,7 +37,7 @@
         "ssm:GetParameters"
       ],
       "Resource": [
-        "arn:aws:ssm::${account_id}:parameter/codebuild/matias/token"
+        "arn:aws:ssm:*:${account_id}:parameter/codebuild/matias/token"
       ]
     },
     {
@@ -47,8 +47,9 @@
         "ecr:BatchGetImage"
       ],
       "Resource": [
-        "arn:aws:ecr::${account_id}:repository/xtages-build-images",
-        "arn:aws:s3:::xtages-buildspecs/*"
+        "arn:aws:ecr:*:${account_id}:repository/xtages-build-images",
+        "arn:aws:ecr:*:${account_id}:repository/node",
+        "arn:aws:s3:::xtages-buildspecs${environment}/*"
       ]
     }
   ]

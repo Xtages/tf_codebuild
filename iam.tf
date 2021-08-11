@@ -41,6 +41,8 @@ resource "aws_iam_role_policy" "xtages_codebuild_cd_policy" {
   role = aws_iam_role.xtages_codebuild_cd_role.id
   policy = templatefile("${path.module}/policies/xtages-codebuild-cd-role-policy.json",{
     account_id = var.account_id
+    environment = var.env == "development" ? "-${var.env}" : ""
+    env_short = var.env == "development" ? "dev-" : ""
   })
 }
 
@@ -49,5 +51,6 @@ resource "aws_iam_role_policy" "xtages_codebuild_ci_policy" {
   role = aws_iam_role.xtages_codebuild_ci_role.id
   policy = templatefile("${path.module}/policies/xtages-codebuild-ci-role-policy.json",{
     account_id = var.account_id
+    environment = var.env == "development" ? "-${var.env}" : ""
   })
 }
