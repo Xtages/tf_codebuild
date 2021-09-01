@@ -72,7 +72,8 @@
         "arn:aws:ecr:*:${account_id}:repository/node",
         "arn:aws:s3:::xtages-buildspecs${environment}",
         "arn:aws:s3:::xtages-${env_short}tfstate",
-        "arn:aws:s3:::xtages-tfstate-customers${environment}"
+        "arn:aws:s3:::xtages-tfstate-customers${environment}",
+        "arn:aws:s3:::xtages-infra-logs-${full_env}"
       ]
     },
     {
@@ -84,7 +85,8 @@
       "Resource": [
         "arn:aws:s3:::xtages-buildspecs${environment}/*",
         "arn:aws:s3:::xtages-${env_short}tfstate/*",
-        "arn:aws:s3:::xtages-tfstate-customers${environment}/*"
+        "arn:aws:s3:::xtages-tfstate-customers${environment}/*",
+        "arn:aws:s3:::xtages-infra-logs-${full_env}/*"
       ]
     },
     {
@@ -101,10 +103,12 @@
         "ecs:DescribeServices",
         "ecs:DescribeTaskDefinition",
         "ecs:RegisterTaskDefinition",
+        "ecs:TagResource",
         "ecs:UpdateService",
         "ecs:TagResource",
         "elasticloadbalancing:AddListenerCertificates",
         "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:AddListenerCertificates",
         "elasticloadbalancing:CreateListener",
         "elasticloadbalancing:CreateRule",
         "elasticloadbalancing:CreateTargetGroup",

@@ -48,6 +48,7 @@ resource "aws_iam_role_policy" "xtages_codebuild_cd_policy" {
     account_id = var.account_id
     environment = local.environment
     env_short = local.env_short
+    full_env = var.env
   })
 }
 
@@ -57,5 +58,6 @@ resource "aws_iam_role_policy" "xtages_codebuild_ci_policy" {
   policy = templatefile("${path.module}/policies/xtages-codebuild-ci-role-policy.json",{
     account_id = var.account_id
     environment = local.environment
+    full_env = var.env
   })
 }
