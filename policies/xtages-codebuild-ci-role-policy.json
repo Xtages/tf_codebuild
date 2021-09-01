@@ -44,12 +44,14 @@
       "Effect": "Allow",
       "Action": [
         "s3:GetObject",
+        "s3:PutObject",
         "ecr:BatchGetImage"
       ],
       "Resource": [
         "arn:aws:ecr:*:${account_id}:repository/xtages-build-images",
         "arn:aws:ecr:*:${account_id}:repository/node",
-        "arn:aws:s3:::xtages-buildspecs${environment}/*"
+        "arn:aws:s3:::xtages-buildspecs${environment}/*",
+        "arn:aws:s3:::xtages-infra-logs-${simple_env}/*"
       ]
     }
   ]
