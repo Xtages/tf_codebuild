@@ -13,7 +13,7 @@
       ],
       "Condition": {
         "StringEquals": {
-          "aws:ResourceTag/organization": "$${aws:ResourceTag/organization}"
+          "aws:ResourceTag/organization-hash": "$${aws:ResourceTag/organization-hash}"
         }
       }
     },
@@ -27,7 +27,7 @@
       ],
       "Condition": {
         "StringEquals": {
-          "aws:ResourceTag/organization": "$${aws:ResourceTag/organization}"
+          "aws:ResourceTag/organization-hash": "$${aws:ResourceTag/organization-hash}"
         }
       }
     },
