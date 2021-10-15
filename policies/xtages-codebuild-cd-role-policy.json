@@ -96,6 +96,8 @@
         "acm:ListCertificates",
         "acm:ListTagsForCertificate",
         "application-autoscaling:*",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
         "ecr:DescribeRepositories",
         "ecr:ListTagsForResource",
         "ecs:CreateService",
