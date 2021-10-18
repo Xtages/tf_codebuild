@@ -59,5 +59,6 @@ resource "aws_iam_role_policy" "xtages_codebuild_ci_policy" {
     account_id = var.account_id
     environment = local.environment
     full_env = var.env
+    subnets = jsonencode(formatlist("arn:aws:ec2:*:${var.account_id}:subnet/%s", var.subnets))
   })
 }
