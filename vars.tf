@@ -5,3 +5,8 @@ variable "env" {
 variable "account_id" {
   description = "AWS account ID"
 }
+
+variable "subnets" {
+  description = "Subnets that CodeBuild will have access to"
+  type = list(string)
+}

@@ -96,8 +96,7 @@
         "acm:ListCertificates",
         "acm:ListTagsForCertificate",
         "application-autoscaling:*",
-        "ec2:DescribeSecurityGroups",
-        "ec2:DescribeSubnets",
+        "ec2:Describe*",
         "ecr:DescribeRepositories",
         "ecr:ListTagsForResource",
         "ecs:CreateService",
@@ -172,6 +171,32 @@
           "iam:PassedToService": [
             "ecs-tasks.amazonaws.com"
           ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeVpcs"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:CreateNetworkInterfacePermission",
+      "Resource": "arn:aws:ec2:*:${account_id}:network-interface/*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:AuthorizedService": "codebuild.amazonaws.com"
+        },
+        "ArnEquals": {
+          "ec2:Subnet": ${subnets}
         }
       }
     }
